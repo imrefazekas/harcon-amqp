@@ -1,0 +1,46 @@
+{
+  "name": "harcon-amqp",
+  "version": "0.1.0",
+  "description": "ZeroMQ plugin for the harcon messaging/service bus of node-based enterprise entities.",
+  "keywords": [
+    "messaging",
+    "enterprise service bus"
+  ],
+  "homepage": "https://github.com/imrefazekas/harcon-amqp",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/imrefazekas/harcon-amqp.git"
+  },
+  "bugs": {
+    "url": "http://github.com/imrefazekas/harcon-amqp/issues"
+  },
+  "author": {
+    "name": "Imre Fazekas",
+    "email": "mail@imrefazekas.me"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "./lib/Amqp.js",
+  "dependencies": {
+    "harcon": ">=1.4.2",
+    "rabbit.js": "^0.4.2"
+  },
+  "devDependencies": {
+    "chai": "latest",
+    "gulp": "latest",
+    "gulp-docco": "latest",
+    "gulp-eslint": "latest",
+    "gulp-load-plugins": "latest",
+    "gulp-mocha": "latest",
+    "gulp-util": "~3",
+    "winston": "latest"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "_id": "harcon-amqp@0.1.0"
+}
