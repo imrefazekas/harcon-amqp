@@ -33,6 +33,10 @@ describe("harcon-amqp", function () {
 			CleanTester.checkMorningGreetings( done );
 		});
 
+		it('Domina forcing is', function(done){
+			CleanTester.checkDomina( done );
+		});
+
 		/*
 		it('General dormir', function(done){
 			harcon.ignite( '0', '', 'morning.dormir', function(err, res){

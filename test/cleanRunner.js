@@ -12,10 +12,11 @@ var fnNames = [
 	'init'
 	, 'addVivian'
 	, 'checkHealth'
-	, 'checkVivian'
-	, 'checkMarie'
-	, 'checkGreetings'
-	, 'checkMorningGreetings'
+	//, 'checkVivian'
+	//, 'checkMarie'
+	//, 'checkGreetings'
+	//, 'checkMorningGreetings'
+	, 'checkDomina'
 	, 'close'
 ];
 

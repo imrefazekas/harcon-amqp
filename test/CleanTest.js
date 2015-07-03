@@ -38,7 +38,7 @@ module.exports = {
 			var divisions = self.harcon.divisions();
 			expect( divisions ).to.eql( [ 'Inflicter', 'Inflicter.click' ] );
 			var listeners = self.harcon.listeners();
-			expect( listeners ).to.eql( [ 'Inflicter', 'Publisher', 'Vivian', 'Alizee', 'Claire', 'Julie', 'Marie' ] );
+			expect( listeners ).to.eql( [ 'Inflicter', 'Publisher', 'Vivian', 'Alizee', 'Claire', 'Domina', 'Julie', 'Marie' ] );
 			callback();
 		}, 1000 );
 	},
@@ -72,6 +72,12 @@ module.exports = {
 			console.log( '>>>>>>>>>>>>>>', err, res );
 			expect(err).to.be.a('null');
 			expect( res[0] ).to.include( 'Bonjour!' );
+			done( );
+		} );
+	},
+	checkDomina: function(done){
+		this.harcon.simpleIgnite( 'Domina.force', function(err, res){
+			console.log( '>>>>>>>>>>>>>>', err, res );
 			done( );
 		} );
 	},
