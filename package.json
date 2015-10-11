@@ -1,6 +1,6 @@
 {
   "name": "harcon-amqp",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "ZeroMQ plugin for the harcon messaging/service bus of node-based enterprise entities.",
   "keywords": [
     "messaging",
@@ -39,5 +39,5 @@
   "engines": {
     "node": ">= 4.0.0"
   },
-  "_id": "harcon-amqp@0.1.1"
+  "_id": "harcon-amqp@0.3.0"
 }
