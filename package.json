@@ -1,9 +1,11 @@
 {
   "name": "harcon-amqp",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "AMQP plugin for the harcon messaging/service bus of node-based enterprise entities.",
   "keywords": [
+    "amqp",
     "messaging",
+    "message bus",
     "enterprise service bus"
   ],
   "homepage": "https://github.com/imrefazekas/harcon-amqp",
@@ -38,6 +40,5 @@
   },
   "engines": {
     "node": ">= 4.0.0"
-  },
-  "_id": "harcon-amqp@0.3.0"
+  }
 }
