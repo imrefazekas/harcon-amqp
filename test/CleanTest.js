@@ -16,6 +16,12 @@ module.exports = {
 		var self = this;
 		self.harcon = new Harcon( { Barrel: Amqp.Barrel, logger: logger, idLength: 32, marie: {greetings: 'Hi!'} }, callback );
 	},
+	activatePublisher: function( callback ){
+		var self = this;
+		self.harcon.addicts( Publisher );
+		Publisher.watch( './test/components', -1 );
+		callback();
+	},
 	addVivian: function(callback){
 		var self = this;
 		var Vivian = {
@@ -25,9 +31,6 @@ module.exports = {
 				cb( null, 'Thanks. ' + greetings );
 			}
 		};
-		self.harcon.addicts( Publisher );
-		Publisher.watch( './test/components', -1 );
-
 		self.harcon.addicts( Vivian, {}, function(){
 			callback();
 		} );
@@ -51,7 +54,6 @@ module.exports = {
 	},
 	checkMarie: function(done){
 		this.harcon.simpleIgnite( 'Marie.simple', 'whatsup?', 'how do you do?', function(err, res){
-			console.log('>>>>>>>>>>>>>>', err, res);
 			should.not.exist(err); should.exist(res);
 			expect( res ).to.include( 'Bonjour!' );
 			done( );
@@ -59,7 +61,6 @@ module.exports = {
 	},
 	checkGreetings: function(done){
 		this.harcon.simpleIgnite( 'greet.simple', 'whatsup?', 'how do you do?', function(err, res){
-			console.log( '>>>>>>>>>>>>>>', err, res );
 			should.not.exist(err); should.exist(res);
 
 			expect( res ).to.include( 'Bonjour!' );
@@ -69,7 +70,6 @@ module.exports = {
 	},
 	checkMorningGreetings: function(done){
 		this.harcon.simpleIgnite( 'dawn.wakeup', function(err, res){
-			console.log( '>>>>>>>>>>>>>>', err, res );
 			expect(err).to.be.a('null');
 			expect( res[0] ).to.include( 'Bonjour!' );
 			done( );
@@ -77,7 +77,6 @@ module.exports = {
 	},
 	checkDomina: function(done){
 		this.harcon.simpleIgnite( 'Domina.force', function(err, res){
-			console.log( '>>>>>>>>>>>>>>', err, res );
 			done( );
 		} );
 	},

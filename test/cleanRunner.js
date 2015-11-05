@@ -10,27 +10,29 @@ console.log('------');
 
 var fnNames = [
 	'init'
+	, 'activatePublisher'
 	, 'addVivian'
 	, 'checkHealth'
-	//, 'checkVivian'
-	//, 'checkMarie'
-	//, 'checkGreetings'
-	//, 'checkMorningGreetings'
+	, 'checkVivian'
+	, 'checkMarie'
+	, 'checkGreetings'
+	, 'checkMorningGreetings'
 	, 'checkDomina'
 	, 'close'
 ];
 
 var tasks = [];
-console.log('------');
 fnNames.forEach(function( fnName ){
 	tasks.push(function(cb){
 		CleanTester[fnName]( function(err){
-			console.log('------');
+			console.log('------ ' + fnName + ' done. ------');
 			error(err);
 			cb();
 		});
 	});
 });
+
 async.series(tasks, function(err, res){
-	console.log(err, res);
+	if(err)
+		console.error(err);
 });

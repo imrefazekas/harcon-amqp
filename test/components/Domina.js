@@ -7,16 +7,11 @@ module.exports = {
 	force: function( ignite, callback ){
 		async.series([
 			function(cb){
-				console.log('???????????');
-				ignite( 0, '', 'greet.gentle', 'It is morning!', 'Time to wake up!', cb );
+				ignite( 0, '', 'greet.simple', 'It is morning!', 'Time to wake up!', cb );
 			},
 			function(cb){
-				console.log('???????????');
-				ignite( 1, 'click', 'Claire.simple', 'It is morning!', 'Time to wake up!', cb );
+				ignite( 1, 'Inflicter.click', 'Claire.simple', 'It is morning!', 'Time to wake up!', cb );
 			}
-		], function(err, res){
-			console.log('::::::', err, res);
-			callback(err, res);
-		});
+		], callback );
 	}
 };

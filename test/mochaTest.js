@@ -4,7 +4,9 @@ describe("harcon-amqp", function () {
 
 	before(function(done){
 		CleanTester.init( function(){
-			CleanTester.addVivian( done );
+			CleanTester.activatePublisher( function(){
+				CleanTester.addVivian( done );
+			} );
 		} );
 	});
 
