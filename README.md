@@ -7,7 +7,9 @@ Note: In PUB/SUB model, [harcon](https://github.com/imrefazekas/harcon) won't se
 
 ## Installation
 
+```javascript
 npm install harcon harcon-amqp --save
+```
 
 
 ## Usage
