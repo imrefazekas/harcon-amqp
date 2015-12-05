@@ -3,7 +3,7 @@ var CleanTester = require('./CleanTest');
 describe("harcon-amqp", function () {
 
 	before(function(done){
-		CleanTester.init( function(){
+		CleanTester.init( process.env.SOCKET_TYPE || 'PUSHWORKER', function(){
 			CleanTester.activatePublisher( function(){
 				CleanTester.addVivian( done );
 			} );

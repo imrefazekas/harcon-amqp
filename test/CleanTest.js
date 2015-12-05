@@ -12,9 +12,9 @@ var Publisher = require('./Publisher');
 
 module.exports = {
 	harcon: null,
-	init: function( callback ){
+	init: function( socketType, callback ){
 		var self = this;
-		self.harcon = new Harcon( { Barrel: Amqp.Barrel, logger: logger, idLength: 32, marie: {greetings: 'Hi!'} }, callback );
+		self.harcon = new Harcon( { socketType: socketType, Barrel: Amqp.Barrel, logger: logger, idLength: 32, marie: {greetings: 'Hi!'} }, callback );
 	},
 	activatePublisher: function( callback ){
 		var self = this;
