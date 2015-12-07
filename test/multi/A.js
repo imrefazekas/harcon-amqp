@@ -4,27 +4,15 @@ var Amqp = require('../../lib/Amqp');
 var Logger = require('../WinstonLogger');
 var logger = Logger.createWinstonLogger( { console: true, level: 'debug' } );
 
-var harcon = new Harcon( { Barrel: Amqp.Barrel, logger: logger }, function(err){
+var harcon = new Harcon( { Barrel: Amqp.Barrel, barrel: { socketType: 'PUBSUB' }, logger: logger }, function(err){
 	if( err ) return console.error( err );
 
-	var Vivian = {
-		name: 'Vivian',
-		greet: function( cb ){
-			cb( null, 'Hello!' );
-		}
-	};
-	harcon.addicts( Vivian, {}, function(){ } );
 	var Marie = {
 		name: 'Marie',
-		greet: function( cb ){
-			cb( null, 'Hello!' );
+		whiny: function (greetings1, greetings2, greetings3, greetings4, callback) {
+			console.log( 'Marie is whiny', greetings1, greetings2, greetings3, greetings4 );
+			callback( null, 'Pas du tout!' );
 		}
 	};
 	harcon.addicts( Marie, {}, function(){ } );
-
-	setTimeout( function(){
-		harcon.simpleIgnite( 'Vivian.greet', function(err, res){
-			console.log('::::::', err, res);
-		} );
-	}, 5000 );
 } );
