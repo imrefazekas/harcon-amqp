@@ -27,3 +27,5 @@ var harcon = new Harcon( { Barrel: Amqp.Barrel, barrel: amqpConfig }, function(e
 ```
 
 Should the recipients be not available or fail to meet the timeframe defined by the attribute 'timeout', [harcon](https://github.com/imrefazekas/harcon) will call the callbacks of the given messages with an error.
+
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
