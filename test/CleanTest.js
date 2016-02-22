@@ -38,11 +38,17 @@ module.exports = {
 	checkHealth: function ( callback ) {
 		var self = this
 		setTimeout( function () {
-			var divisions = self.harcon.divisions()
-			expect( divisions ).to.eql( [ 'Inflicter', 'Inflicter.click' ] )
-			var listeners = self.harcon.listeners()
-			expect( listeners ).to.eql( [ 'Inflicter', 'Publisher', 'Vivian', 'Alizee', 'Claire', 'Domina', 'Julie', 'Marie' ] )
-			callback()
+			self.harcon.divisions( function (err, divisions) {
+				if ( err ) return callback( err )
+
+				expect( divisions ).to.eql( [ 'Inflicter', 'Inflicter.click' ] )
+				self.harcon.listeners( function (err, listeners) {
+					[ 'Inflicter', 'Publisher', 'Vivian', 'Alizee', 'Claire', 'Domina', 'Julie', 'Marie' ].forEach( function (element) {
+						expect( listeners ).to.include( element )
+					} )
+					callback( err )
+				} )
+			})
 		}, 1000 )
 	},
 	checkVivian: function ( done ) {
