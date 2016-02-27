@@ -1,6 +1,6 @@
 {
   "name": "harcon-amqp",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "AMQP plugin for the harcon messaging/service bus of node-based enterprise entities.",
   "keywords": [
     "amqp",
@@ -24,7 +24,7 @@
   "main": "./lib/Amqp.js",
   "dependencies": {
     "async": "^1.5.2",
-    "harcon": "^3.1.0",
+    "harcon": "^3.2.0",
     "rabbit.js": "^0.4.4"
   },
   "devDependencies": {
@@ -39,7 +39,7 @@
     "mkdirp": "^0.5.1",
     "run-sequence": "^1.1.5",
     "watch": "^0.17.1",
-    "winston": "^2.1.1"
+    "winston": "^2.2.0"
   },
   "engines": {
     "node": ">= 4.0.0"
