@@ -1,6 +1,6 @@
 {
   "name": "harcon-amqp",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "AMQP plugin for the harcon messaging/service bus of node-based enterprise entities.",
   "keywords": [
     "amqp",
