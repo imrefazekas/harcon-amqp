@@ -37,6 +37,14 @@ module.exports = {
 			callback()
 		} )
 	},
+	divisions: function (callback) {
+		this.harcon.simpleIgnite( 'Inflicter.divisions', function (err, res) {
+			should.not.exist(err)
+			should.exist(res)
+			expect( res[0] ).to.include( 'Inflicter', 'Inflicter.click' )
+			callback(err)
+		} )
+	},
 	checkHealth: function ( callback ) {
 		let self = this
 		setTimeout( function () {

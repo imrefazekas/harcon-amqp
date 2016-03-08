@@ -12,6 +12,12 @@ describe('harcon-amqp', function () {
 		} )
 	})
 
+	describe('Acquire Harcon divisions', function () {
+		it('Divisions...', function (done) {
+			CleanTester.divisions( done )
+		})
+	})
+
 	describe('Test Harcon status calls', function () {
 		it('Patient...', function (done) {
 			CleanTester.checkHealth( done )
