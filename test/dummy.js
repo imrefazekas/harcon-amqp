@@ -1,12 +1,12 @@
-var _ = require('lodash')
+'use strict'
 
-var ctx = require('rabbit.js').createContext('amqp://localhost')
+let ctx = require('rabbit.js').createContext('amqp://localhost')
 
 console.log( ctx.close )
 /*
-var pub = ctx.socket('PUB', {routing: 'topic'})
-var sub = ctx.socket('SUB', {routing: 'topic'})
-var sub2 = ctx.socket('SUB', {routing: 'topic'})
+let pub = ctx.socket('PUB', {routing: 'topic'})
+let sub = ctx.socket('SUB', {routing: 'topic'})
+let sub2 = ctx.socket('SUB', {routing: 'topic'})
 sub.pipe(process.stdout)
 sub2.pipe(process.stdout)
 
@@ -21,22 +21,21 @@ sub.connect('events', 'user.*', function () {
 
 */
 
-var pull = ctx.socket('PULL')
+let pull = ctx.socket('PULL')
 function process ( ) {
-	var msg
+	let msg
 	while ( (msg = pull.read()) ) {
 		console.log('>>>>>>>>', JSON.parse(msg).username )
 	}
 }
 
-var push = ctx.socket('PUSH')
+let push = ctx.socket('PUSH')
 push.setDefaultEncoding('utf8')
 pull.setEncoding('utf8')
 
 push.connect('events', function () {
 	pull.connect('events', function () {
 		pull.on('readable', process )
-		console.log( '????????????', _.functions( push ), _.functions( pull ) )
 		push.write(JSON.stringify({username: 'Fiver'}), 'utf8')
 		// push.publish('user.create', JSON.stringify({username: "Fiver"}))
 	})

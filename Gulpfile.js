@@ -1,9 +1,6 @@
 var gulp = require('gulp'),
 	plugins = require('gulp-load-plugins')( { scope: ['devDependencies'] } )
 
-var runSequence = require('run-sequence')
-
-
 gulp.task( 'eslint', function (callback) {
 	return gulp.src( './lib/*.js' )
 		.pipe( plugins.eslint() )
@@ -11,22 +8,8 @@ gulp.task( 'eslint', function (callback) {
 		.pipe( plugins.eslint.failOnError() )
 } )
 
-gulp.task( 'mochaTestWorker', function (callback) {
-	process.env.SOCKET_TYPE = 'PUSHWORKER'
-	return gulp.src( './test/amqp.mocha.js' ).pipe( plugins.mocha({reporter: 'nyan'}) )
-} )
-gulp.task( 'mochaTestSub', function (callback) {
-	process.env.SOCKET_TYPE = 'PUBSUB'
-	return gulp.src( './test/amqp.mocha.js' ).pipe( plugins.mocha({reporter: 'nyan'}) )
-} )
-gulp.task( 'mochaTestPull', function (callback) {
-	process.env.SOCKET_TYPE = 'PUSHPULL'
-	return gulp.src( './test/amqp.mocha.js' ).pipe( plugins.mocha({reporter: 'nyan'}) )
-} )
 gulp.task( 'mochaTest', function (callback) {
-	runSequence(
-		'mochaTestWorker', 'mochaTestSub', 'mochaTestPull', callback
-	)
+	return gulp.src( './test/amqp.mocha.js' ).pipe( plugins.mocha({reporter: 'nyan'}) )
 } )
 
 gulp.task( 'doc', function (callback) {

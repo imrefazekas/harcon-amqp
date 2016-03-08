@@ -1,30 +1,32 @@
-var chai = require('chai'),
+'use strict'
+
+let chai = require('chai'),
 	should = chai.should(),
 	expect = chai.expect
 
-var Harcon = require('harcon')
-var Amqp = require('../lib/Amqp')
+let Harcon = require('harcon')
+let Amqp = require('../lib/Amqp')
 
-var Logger = require('./WinstonLogger')
-var logger = Logger.createWinstonLogger( { console: true, level: 'debug' } )
+let Logger = require('./WinstonLogger')
+let logger = Logger.createWinstonLogger( { console: true, level: 'debug' } )
 
-var Publisher = require('./Publisher')
+let Publisher = require('./Publisher')
 
 module.exports = {
 	harcon: null,
-	init: function ( socketType, callback ) {
-		var self = this
-		self.harcon = new Harcon( { socketType: socketType, Barrel: Amqp.Barrel, logger: logger, idLength: 32, marie: {greetings: 'Hi!'} }, callback )
+	init: function ( callback ) {
+		let self = this
+		self.harcon = new Harcon( { Barrel: Amqp.Barrel, logger: logger, idLength: 32, marie: {greetings: 'Hi!'} }, callback )
 	},
 	activatePublisher: function ( callback ) {
-		var self = this
+		let self = this
 		self.harcon.addicts( Publisher )
 		Publisher.watch( './test/components', -1 )
 		callback()
 	},
 	addVivian: function (callback) {
-		var self = this
-		var Vivian = {
+		let self = this
+		let Vivian = {
 			name: 'Vivian',
 			context: 'morning',
 			wakeup: function ( greetings, ignite, cb ) {
@@ -36,7 +38,7 @@ module.exports = {
 		} )
 	},
 	checkHealth: function ( callback ) {
-		var self = this
+		let self = this
 		setTimeout( function () {
 			self.harcon.divisions( function (err, divisions) {
 				if ( err ) return callback( err )

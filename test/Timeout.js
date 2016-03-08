@@ -1,13 +1,15 @@
-var Harcon = require('harcon')
-var Amqp = require('../lib/Amqp')
+'use strict'
 
-var Logger = require('./WinstonLogger')
-var logger = Logger.createWinstonLogger( { console: true, level: 'debug' } )
+let Harcon = require('harcon')
+let Amqp = require('../lib/Amqp')
 
-var harcon = new Harcon( { Barrel: Amqp.Barrel, barrel: { timeout: 1000 }, logger: logger }, function (err) {
+let Logger = require('./WinstonLogger')
+let logger = Logger.createWinstonLogger( { console: true, level: 'debug' } )
+
+let harcon = new Harcon( { Barrel: Amqp.Barrel, barrel: { timeout: 1000 }, logger: logger }, function (err) {
 	if ( err ) return console.error( err )
 
-	var Marie = {
+	let Marie = {
 		name: 'Marie',
 		greet: function ( cb ) {
 			cb( null, 'Hello!' )

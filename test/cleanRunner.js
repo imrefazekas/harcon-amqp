@@ -1,5 +1,7 @@
-var CleanTester = require('./CleanTest')
-var async = require('async')
+'use strict'
+
+let CleanTester = require('./CleanTest')
+let async = require('async')
 
 function error (err) { if (err) {
 	console.error(err)
@@ -8,7 +10,7 @@ function error (err) { if (err) {
 
 console.log('------')
 
-var fnNames = [
+let fnNames = [
 	'init',
 	'activatePublisher',
 	'addVivian',
@@ -21,7 +23,7 @@ var fnNames = [
 	'close'
 ]
 
-var tasks = []
+let tasks = []
 fnNames.forEach(function ( fnName ) {
 	tasks.push(function (cb) {
 		CleanTester[fnName]( function (err) {

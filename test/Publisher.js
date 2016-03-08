@@ -1,10 +1,12 @@
-var fs = require('fs')
-var watch = require('watch')
-var mkdirp = require('mkdirp')
+'use strict'
 
-var path = require('path')
+let fs = require('fs')
+let watch = require('watch')
+let mkdirp = require('mkdirp')
 
-var events = ['created', 'removed', 'changed']
+let path = require('path')
+
+let events = ['created', 'removed', 'changed']
 
 module.exports = {
 	name: 'Publisher',
@@ -17,21 +19,21 @@ module.exports = {
 		this.configs[name] = config
 	},
 	scheduleFile: function ( folder, fileName ) {
-		var path = folder ? folder + '/' + fileName : fileName
+		let path = folder ? folder + '/' + fileName : fileName
 		if ( this.files.indexOf( path ) === -1 )
 			this.files.push( path )
 	},
 	igniteFiles: function ( ) {
-		var self = this
+		let self = this
 		self.files.forEach( function (newFile) {
-			var fn = function (err, res) {
+			let fn = function (err, res) {
 				if ( err ) {
 					console.error( err, newFile )
 					self.inflicterContext.logger.error( 'Failed to publish', newFile, err )
 				}
 			}
 			if ( fs.existsSync( newFile ) ) {
-				var component = require( newFile.substring( 0, newFile.length - 3 ) )
+				let component = require( newFile.substring( 0, newFile.length - 3 ) )
 				if ( !component.adequate || component.adequate() )
 					self.ignite( 'Inflicter.addicts', component, self.configs[component.name], fn )
 			} else
@@ -40,12 +42,12 @@ module.exports = {
 		self.files = []
 	},
 	readFiles: function ( folder, matcher, callback ) {
-		var self = this
+		let self = this
 		fs.readdir(folder, function (err, files) {
 			if (err)
 				console.error( err )
 			else {
-				for (var i = 0; i < files.length; i += 1) {
+				for (let i = 0; i < files.length; i += 1) {
 					if ( matcher(files[i]) ) {
 						self.scheduleFile( folder, files[i] )
 					}
@@ -56,9 +58,9 @@ module.exports = {
 		})
 	},
 	watch: function ( folder, timeout, pattern ) {
-		var self = this
-		var extension = '.js'
-		var matcher = function (filePath) { return pattern ? pattern.test(filePath) : filePath.endsWith( extension ) }
+		let self = this
+		let extension = '.js'
+		let matcher = function (filePath) { return pattern ? pattern.test(filePath) : filePath.endsWith( extension ) }
 
 		self.close()
 
@@ -69,13 +71,13 @@ module.exports = {
 
 		self.files = []
 
-		var isComponent = function (filePath, stat) {
+		let isComponent = function (filePath, stat) {
 			return !stat.isDirectory() && matcher(filePath)
 		}
 		self.readFiles( folder, matcher, function () {
 			watch.createMonitor( folder, function (monitor) {
 				self.monitor = monitor
-				var handler = function (f, stat) {
+				let handler = function (f, stat) {
 					if ( isComponent( f, stat ) )
 						self.scheduleFile( null, f )
 				}

@@ -1,9 +1,11 @@
-var CleanTester = require('./CleanTest')
+'use strict'
+
+let CleanTester = require('./CleanTest')
 
 describe('harcon-amqp', function () {
 
 	before(function (done) {
-		CleanTester.init( process.env.SOCKET_TYPE || 'PUSHWORKER', function () {
+		CleanTester.init( function () {
 			CleanTester.activatePublisher( function () {
 				CleanTester.addVivian( done )
 			} )
