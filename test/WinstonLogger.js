@@ -1,6 +1,4 @@
-'use strict'
-
-let winston = require('winston')
+var winston = require('winston')
 
 exports.createWinstonLogger = function ( options ) {
 	options = options || {}
@@ -12,7 +10,7 @@ exports.createWinstonLogger = function ( options ) {
 		winston.handleExceptions(new winston.transports.File({ filename: options.exceptionFile }))
 	else
 		winston.handleExceptions( new (winston.transports.Console)({ level: 'error', colorize: 'true' }) )
-	let transports = [
+	var transports = [
 		new (winston.transports.Console)({ level: 'error', colorize: 'true' }),
 		new (winston.transports.File)( {
 			filename: options.file || 'server.log',

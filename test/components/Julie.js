@@ -1,12 +1,10 @@
-'use strict'
-
 module.exports = {
 	name: 'Julie',
-	context: 'dawn',
+	context: 'morning',
 	// When Julie is woken up, send a gentle message to everyone listening to such messages...  Walter and Pater namely
 	wakeup: function ( ignite, callback ) {
-		this.harconlog( null, 'Simple logging test', {}, 'warn' )
-		ignite( 'greet.simple', 'It is morning!', 'Time to wake up!', function (err, res) {
+		this.harconlog( null, 'Simple logging test', {}, 'info' )
+		ignite( 'greet.gentle', 'It is morning!', 'Time to wake up!', function (err, res) {
 			callback(err, res)
 		} )
 	},
