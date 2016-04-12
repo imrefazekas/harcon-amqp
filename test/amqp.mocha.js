@@ -96,7 +96,7 @@ describe('harcon', function () {
 
 		it('Simple greetings by name is', function (done) {
 			// Sending a greetings message with 2 parameters and waiting for the proper answer
-			inflicter.ignite( clerobee.generate(), '', 'Marie.simple', 'whatsup?', 'how do you do?', function (err, res) {
+			inflicter.ignite( clerobee.generate(), null, '', 'Marie.simple', 'whatsup?', 'how do you do?', function (err, res) {
 				should.not.exist(err)
 				should.exist(res)
 				expect( res ).to.include( 'Bonjour!' )
@@ -106,7 +106,7 @@ describe('harcon', function () {
 
 		it('Simple greetings is', function (done) {
 			// Sending a greetings message with 2 parameters and waiting for the proper answer
-			inflicter.ignite( clerobee.generate(), '', 'greet.simple', 'whatsup?', 'how do you do?', function (err, res) {
+			inflicter.ignite( clerobee.generate(), null, '', 'greet.simple', 'whatsup?', 'how do you do?', function (err, res) {
 				// console.log( err, res )
 				should.not.exist(err)
 				should.exist(res)
@@ -121,7 +121,7 @@ describe('harcon', function () {
 
 		it('Morning greetings is', function (done) {
 			// Sending a morning message and waiting for the proper answer
-			inflicter.ignite( clerobee.generate(), '', 'morning.wakeup', function (err, res) {
+			inflicter.ignite( clerobee.generate(), null, '', 'morning.wakeup', function (err, res) {
 				// console.log( err, res )
 
 				expect(err).to.be.a('null')
@@ -131,7 +131,7 @@ describe('harcon', function () {
 		})
 
 		it('General dormir', function (done) {
-			inflicter.ignite( clerobee.generate(), '', 'morning.dormir', function (err, res) {
+			inflicter.ignite( clerobee.generate(), null, '', 'morning.dormir', function (err, res) {
 				// console.log( err, res )
 
 				expect(err).to.be.a('null')
@@ -141,7 +141,7 @@ describe('harcon', function () {
 		})
 
 		it('Specific dormir', function (done) {
-			inflicter.ignite( clerobee.generate(), '', 'morning.girls.dormir', function (err, res) {
+			inflicter.ignite( clerobee.generate(), null, '', 'morning.girls.dormir', function (err, res) {
 				// console.log( err, res )
 
 				expect(err).to.be.a('null')
@@ -153,7 +153,7 @@ describe('harcon', function () {
 		it('No answer', function (done) {
 			// Sending a morning message and waiting for the proper answer
 			this.timeout(5000)
-			inflicter.ignite( clerobee.generate(), '', 'cave.echo', function (err, res) {
+			inflicter.ignite( clerobee.generate(), null, '', 'cave.echo', function (err, res) {
 				expect(err).to.be.an.instanceof( Error )
 				expect(res).to.be.a('null')
 				done()
@@ -181,7 +181,7 @@ describe('harcon', function () {
 		})
 
 		it('Division Promise test', function (done) {
-			inflicter.ignite( clerobee.generate(), harconName + '.click', 'greet.simple', 'Hi', 'Ca vas?' )
+			inflicter.ignite( clerobee.generate(), null, harconName + '.click', 'greet.simple', 'Hi', 'Ca vas?' )
 			.then( function ( res ) {
 				should.exist(res)
 
@@ -199,7 +199,7 @@ describe('harcon', function () {
 
 		it('Division test', function (done) {
 			// Sending a morning message and waiting for the proper answer
-			inflicter.ignite( clerobee.generate(), harconName + '.click', 'greet.simple', 'Hi', 'Ca vas?', function (err, res) {
+			inflicter.ignite( clerobee.generate(), null, harconName + '.click', 'greet.simple', 'Hi', 'Ca vas?', function (err, res) {
 				// console.log( err, res )
 
 				should.not.exist(err)
@@ -231,7 +231,7 @@ describe('harcon', function () {
 		it('Deactivate', function (done) {
 			// Sending a morning message and waiting for the proper answer
 			inflicter.deactivate('Claire')
-			inflicter.ignite( clerobee.generate(), harconName + '.click', 'greet.simple', 'Hi', 'Ca vas?', function (err, res) {
+			inflicter.ignite( clerobee.generate(), null, harconName + '.click', 'greet.simple', 'Hi', 'Ca vas?', function (err, res) {
 				// console.log( err, res )
 
 				should.not.exist(err)
