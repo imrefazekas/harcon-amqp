@@ -25,6 +25,7 @@
   "dependencies": {
     "async": "^1.5.2",
     "harcon": "^4.0.0",
+    "isa.js": "^1.6.1",
     "rabbit.js": "^0.4.4"
   },
   "devDependencies": {
