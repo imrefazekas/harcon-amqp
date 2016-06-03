@@ -24,7 +24,7 @@
   "main": "./lib/Amqp.js",
   "dependencies": {
     "async": "^2.0.0-rc.5",
-    "harcon": "^4.1.0",
+    "harcon": "^4.1.1",
     "isa.js": "^1.6.1",
     "rabbit.js": "^0.4.4"
   },
