@@ -22,7 +22,7 @@ describe('harcon', function () {
 	var inflicter
 
 	before(function (done) {
-		var logger = Logger.createWinstonLogger( { file: 'mochatest.log', level: 'debug' } )
+		var logger = Logger.createWinstonLogger( { console: true, /* file: 'mochatest.log', */ level: 'debug' } )
 
 		// Initializes the Harcon system
 		// also initialize the deployer component which will automaticall publish every component found in folder './test/components'
@@ -66,22 +66,34 @@ describe('harcon', function () {
 				})
 			}, 500 )
 		})
+		/* it('test network failure', function (done) {
+			console.log('test network failure...')
+			this.timeout(20000)
+			setTimeout( function () {
+				inflicter.ignite( clerobee.generate(), null, '', 'Marie.simple', 'whatsup?', 'how do you do?', function (err, res) {
+					console.log('????????', err, res)
+				})
+			}, 7000)
+			setTimeout( function () {
+				console.log('SENDING!!!!!!!')
+				inflicter.ignite( clerobee.generate(), null, '', 'Marie.simple', 'whatsup?', 'how do you do?', function (err, res) {
+					console.log('>>>>>', err, res)
+					should.not.exist(err)
+					should.exist(res)
+
+					expect( res ).to.include( 'Bonjour!' )
+
+					done()
+				})
+			}, 15000)
+		})*/
+
 		it('Retrieve listeners...', function (done) {
 			inflicter.listeners( function (err, listeners) {
 				expect( listeners ).to.eql( [ 'Inflicter', 'Publisher', 'peter', 'walter', 'Alizee', 'Domina', 'Julie', 'Claire', 'Marie' ] )
 				done(err)
 			} )
 		})
-		/*
-		it('Send for divisions...', function (done) {
-			inflicter.ignite( clerobee.generate(), '', 'Inflicter.divisions', function (err, res) {
-				should.not.exist(err)
-				should.exist(res)
-				expect( res[0] ).to.include( harconName, harconName + '.click' )
-				done()
-			} )
-		})
-		*/
 		it('Clean internals', function (done) {
 			inflicter.pendingComms( function (err, comms) {
 				comms.forEach( function (comm) {
@@ -90,6 +102,7 @@ describe('harcon', function () {
 				done(err)
 			} )
 		})
+
 	})
 
 	describe('Harcon workflow', function () {
@@ -242,7 +255,6 @@ describe('harcon', function () {
 				done( )
 			} )
 		})
-
 	})
 
 	describe('Post health tests', function () {

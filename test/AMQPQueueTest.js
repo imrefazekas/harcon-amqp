@@ -2,8 +2,7 @@
 
 let rabbit = require('rabbit.js')
 
-let ctx = rabbit.createContext( 'amqp://localhost' )
-
+let ctx
 
 let julie = {}
 function createJulie ( division, name ) {
@@ -12,6 +11,12 @@ function createJulie ( division, name ) {
 	julie.sub.setEncoding('utf8')
 	julie.sub.on('data', function ( message ) {
 		console.log('Julie received:::', message)
+	} )
+	julie.pub.on('close', function () {
+		console.error('>>>>> julie pub >>>>>>', arguments)
+	} )
+	julie.sub.on('close', function () {
+		console.error('>>>>> julie sub >>>>>>', arguments)
 	} )
 	julie.sub.connect( division, 'julie.*', function (err) {
 		if (err) console.error(err)
@@ -31,6 +36,9 @@ function createMarie ( division, name ) {
 	marie.sub.on('data', function ( message ) {
 		console.log('Marie received:::', message)
 	} )
+	marie.sub.on('close', function () {
+		console.error('>>>>> marie sub >>>>>>', arguments)
+	} )
 	marie.sub.connect( division, 'marie.*', function ( ) {
 		console.log('Marie sub connected')
 		marie.connected = true
@@ -48,8 +56,16 @@ function connected () {
 	sendMessages()
 }
 
-ctx.on('ready', function () {
-	console.log('Connected')
-	connected()
+function create ( closeFn ) {
+	ctx = rabbit.createContext( 'amqp://localhost' )
+	ctx.on('ready', function () {
+		console.log('Connected')
+		connected()
+	} )
+	ctx.on('error', closeFn )
+	ctx.on('close', closeFn )
+}
+
+create( function () {
+	console.error('>>>>> WTF >>>>>>', arguments)
 } )
-ctx.on('error', console.error )
