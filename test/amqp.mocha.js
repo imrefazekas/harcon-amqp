@@ -56,6 +56,7 @@ describe('harcon', function () {
 	})
 
 	describe('Test Harcon status calls', function () {
+
 		it('Retrieve divisions...', function (done) {
 			setTimeout( function () {
 				inflicter.divisions().then( function (divisions) {
@@ -66,7 +67,7 @@ describe('harcon', function () {
 				})
 			}, 500 )
 		})
-		/* it('test network failure', function (done) {
+		it('test network failure', function (done) {
 			console.log('test network failure...')
 			this.timeout(20000)
 			setTimeout( function () {
@@ -86,11 +87,12 @@ describe('harcon', function () {
 					done()
 				})
 			}, 15000)
-		})*/
+		})
 
 		it('Retrieve listeners...', function (done) {
 			inflicter.listeners( function (err, listeners) {
-				expect( listeners ).to.eql( [ 'Inflicter', 'Publisher', 'peter', 'walter', 'Alizee', 'Domina', 'Julie', 'Claire', 'Marie' ] )
+				console.log( '....', listeners )
+				expect( listeners ).to.eql( [ 'Inflicter', 'Publisher', 'peter', 'walter', 'Alizee', 'Claire', 'Domina', 'Julie', 'Marie' ] )
 				done(err)
 			} )
 		})
@@ -255,6 +257,7 @@ describe('harcon', function () {
 				done( )
 			} )
 		})
+
 	})
 
 	describe('Post health tests', function () {
