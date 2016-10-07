@@ -26,32 +26,35 @@ describe('harcon', function () {
 
 		// Initializes the Harcon system
 		// also initialize the deployer component which will automaticall publish every component found in folder './test/components'
-		inflicter = new Harcon( {
+		new Harcon( {
 			name: harconName,
 			Barrel: Amqp.Barrel,
 			logger: logger, idLength: 32,
 			blower: { commTimeout: 2000, tolerates: ['Alizee.superFlegme'] },
 			Marie: {greetings: 'Hi!'}
-		}, function (err) {
-			if (err) return done(err)
-
-			inflicter.addicts( Publisher, function (err, res) {
-				if (err) return done(err)
-
-				Publisher.watch( path.join( process.cwd(), 'test', 'components' ) )
-
-				// Publishes an event listener function: Peter. It just sends a simple greetings in return
-				inflicter.addict( null, 'peter', 'greet.*', function (greetings1, greetings2, callback) {
-					callback(null, 'Hi there!')
-				} )
-
-				// Publishes another function listening all messages which name starts with 'greet'. It just sends a simple greetings in return
-				inflicter.addict( null, 'walter', 'greet.*', function (greetings1, greetings2, callback) {
-					callback(null, 'My pleasure!')
-				} )
-
-				done()
+		} )
+		.then( function (_inflicter) {
+			console.log('>>>>>', _inflicter)
+			inflicter = _inflicter
+			return inflicter.inflicterEntity.addicts( Publisher )
+		} )
+		.then( () => { return Publisher.watch( path.join( process.cwd(), 'test', 'components' ) ) } )
+		.then( () => {
+			// Publishes an event listener function: Peter. It just sends a simple greetings in return
+			inflicter.addict( null, 'peter', 'greet.*', function (greetings1, greetings2, callback) {
+				callback(null, 'Hi there!')
 			} )
+
+			// Publishes another function listening all messages which name starts with 'greet'. It just sends a simple greetings in return
+			inflicter.addict( null, 'walter', 'greet.*', function (greetings1, greetings2, callback) {
+				callback(null, 'My pleasure!')
+			} )
+		} )
+		.then( function () {
+			done()
+		} )
+		.catch(function (reason) {
+			return done(reason)
 		} )
 	})
 
