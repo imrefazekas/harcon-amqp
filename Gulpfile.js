@@ -23,4 +23,4 @@ gulp.task( 'doc', function (callback) {
 var web = require('./test/web/build-web' )
 gulp.task( 'build-web-test', web.buildTasks )
 */
-gulp.task( 'default', ['eslint', 'mochaTest', 'doc'] )
+gulp.task( 'default', gulp.series('eslint', 'mochaTest', 'doc') )
