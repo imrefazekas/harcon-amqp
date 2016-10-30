@@ -14,8 +14,6 @@ let Amqp = require('../lib/Amqp')
 
 let Logger = require('./WinstonLogger')
 
-let Publisher = require('./Publisher')
-
 let Clerobee = require('clerobee')
 let clerobee = new Clerobee(16)
 
@@ -34,13 +32,13 @@ describe('harcon', function () {
 			Barrel: Amqp.Barrel,
 			logger: logger, idLength: 32,
 			blower: { commTimeout: 1500, tolerates: ['Alizee.superFlegme'] },
+			mortar: { enabled: true, folder: path.join( __dirname, 'components' ) },
 			Marie: {greetings: 'Hi!'}
 		} )
 		.then( function (_inflicter) {
 			inflicter = _inflicter
-			return inflicter.inflicterEntity.addicts( Publisher )
+			return inflicter
 		} )
-		.then( () => { return Publisher.watch( path.join( process.cwd(), 'test', 'components' ) ) } )
 		.then( () => {
 			// Publishes an event listener function: Peter. It just sends a simple greetings in return
 			return inflicter.inflicterEntity.addict( null, 'peter', 'greet.*', function (greetings1, greetings2, callback) {
@@ -77,7 +75,7 @@ describe('harcon', function () {
 			inflicter.entities( function (err, entities) {
 				let names = entities.map( function (entity) { return entity.name } )
 				console.log( '...', err, entities, names )
-				expect( names ).to.eql( [ 'Inflicter', 'Publisher', 'peter', 'Alizee', 'Bandit', 'Charlotte', 'Claire', 'Domina', 'Julie', 'Lina', 'Marie', 'Marion', 'walter' ] )
+				expect( names ).to.eql( [ 'Inflicter', 'peter', 'Mortar', 'Alizee', 'Bandit', 'Charlotte', 'Claire', 'Domina', 'Julie', 'Lina', 'Marie', 'Marion', 'walter' ] )
 				done(err)
 			} )
 		})
