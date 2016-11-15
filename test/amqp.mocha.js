@@ -73,9 +73,9 @@ describe('harcon', function () {
 		})
 		it('Retrieve entities...', function (done) {
 			inflicter.entities( function (err, entities) {
-				let names = entities.map( function (entity) { return entity.name } )
+				let names = entities.map( function (entity) { return entity.name } ).sort()
 				console.log( '...', err, entities, names )
-				expect( names ).to.eql( [ 'Inflicter', 'peter', 'Mortar', 'Alizee', 'Bandit', 'Charlotte', 'Claire', 'Domina', 'Julie', 'Lina', 'Marie', 'Marion', 'walter' ] )
+				expect( names ).to.eql( [ 'Alizee', 'Bandit', 'Charlotte', 'Claire', 'Domina', 'Inflicter', 'Julie', 'Lina', 'Marie', 'Marion', 'Mortar', 'peter', 'walter' ] )
 				done(err)
 			} )
 		})
