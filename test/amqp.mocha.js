@@ -4,8 +4,6 @@ let chai = require('chai')
 let should = chai.should()
 let expect = chai.expect
 
-let async = require('async')
-
 let path = require('path')
 
 // Requires harcon. In your app the form 'require('harcon')' should be used
@@ -147,10 +145,14 @@ describe('harcon', function () {
 
 	describe('Erupt flow', function () {
 		it('Simple greetings by name is', function (done) {
-			async.series([
-				inflicter.erupt( '0', null, '', 'Marie.simple', 'whatsup?', 'how do you do?'),
-				inflicter.erupt( '0', null, '', 'greet.simple', 'whatsup?', 'how do you do?')
-			], done)
+			inflicter.ignite( '0', null, '', 'Marie.simple', 'whatsup?', 'how do you do?')
+			.then( () => {
+				return inflicter.ignite( '0', null, '', 'greet.simple', 'whatsup?', 'how do you do?')
+			} )
+			.then( () => {
+				done()
+			} )
+			.catch( done )
 		})
 		it('Marion', function (done) {
 			// Sending a morning message and waiting for the proper answer
@@ -335,7 +337,8 @@ describe('harcon', function () {
 
 	after(function (done) {
 		// Shuts down Harcon when it is not needed anymore
-		inflicter.close()
+		if (inflicter)
+			inflicter.close()
 		done()
 	})
 })
