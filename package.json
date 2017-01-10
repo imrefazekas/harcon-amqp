@@ -1,6 +1,6 @@
 {
   "name": "harcon-amqp",
-  "version": "5.11.1",
+  "version": "6.0.0",
   "description": "AMQP plugin for the harcon messaging/service bus of node-based enterprise entities.",
   "keywords": [
     "amqp",
@@ -23,8 +23,8 @@
   "license": "MIT",
   "main": "./lib/Amqp.js",
   "dependencies": {
-    "harcon": "^5.11.1",
-    "isa.js": "^1.7.6",
+    "harcon": "^6.0.0",
+    "isa.js": "^1.8.2",
     "proback.js": "^1.7.1",
     "rabbit.js": "^0.4.4"
   },
@@ -35,7 +35,7 @@
     "gulp-eslint": "^3.0.1",
     "gulp-load-plugins": "^1.4.0",
     "gulp-mocha": "^3.0.1",
-    "gulp-util": "^3.0.7",
+    "gulp-util": "^3.0.8",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "watch": "^1.0.1",
