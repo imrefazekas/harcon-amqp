@@ -10,7 +10,7 @@ let path = require('path')
 let Harcon = require('harcon')
 let Amqp = require('../lib/Amqp')
 
-let Logger = require('./WinstonLogger')
+let Logger = require('./PinoLogger')
 
 let Clerobee = require('clerobee')
 let clerobee = new Clerobee(16)
@@ -20,8 +20,7 @@ describe('harcon', function () {
 	let inflicter
 
 	before(function (done) {
-		let logger = Logger.createWinstonLogger( { console: true } )
-		// let logger = Logger.createWinstonLogger( { file: 'mochatest.log' } )
+		let logger = Logger.createPinoLogger( { level: 'info' } )
 
 		// Initializes the Harcon system
 		// also initialize the deployer component which will automaticall publish every component found in folder './test/components'
@@ -98,6 +97,7 @@ describe('harcon', function () {
 	describe('Error handling', function () {
 		it('Throw error', function (done) {
 			inflicter.ignite( clerobee.generate(), null, '', 'Bandit.delay', function (err) {
+				console.log( '-----------------------------------', arguments )
 				should.exist(err)
 				done()
 			} )
