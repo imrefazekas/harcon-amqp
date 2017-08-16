@@ -1,8 +1,7 @@
 # harcon-amqp
 AMQP transport layer ("Barrel") plugin for [harcon](https://github.com/imrefazekas/harcon).
 
-Both PUB/SUB and PUSH/PULL socket types are supported. See socket types explained [here](http://www.squaremobius.net/rabbit.js/).
-
+Zero configuration scaling: this transport layer supports infinite horizontal scaling for harcon microservices without any configuration. All service discovery and balancing logic is provided by this package.
 
 ## Installation
 
