@@ -61,7 +61,10 @@ describe('harcon', function () {
 
 			console.log('\n\n-----------------------\n\n')
 			assert.ok( 'Harcon initiated...' )
-		} catch (err) { assert.fail( err ) }
+		} catch (err) {
+			console.error(err)
+			assert.fail( err )
+		}
 	})
 
 	describe('Test Harcon system calls', function () {
