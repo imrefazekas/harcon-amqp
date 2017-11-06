@@ -75,7 +75,7 @@ describe('harcon', function () {
 		it('Retrieve entities...', async function () {
 			let entities = await inflicter.entities( )
 			let names = entities.map( function (entity) { return entity.name } ).sort()
-			expect( names ).to.eql( [ 'Alizee', 'Bandit', 'Charlotte', 'Claire', 'Domina', 'Inflicter', 'Julie', 'Lina', 'Margot', 'Marie', 'Marion', 'Mortar', 'peter', 'walter' ] )
+			expect( names ).to.eql( [ 'Alizee', 'Bandit', 'Boss', 'Charlotte', 'Claire', 'Domina', 'Inflicter', 'Julie', 'Lina', 'Margot', 'Marie', 'Marion', 'Mortar', 'peter', 'walter' ] )
 		})
 		it('Send for divisions...', async function () {
 			let res = await inflicter.ignite( clerobee.generate(), null, '', 'Inflicter.divisions')
