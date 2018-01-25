@@ -32,8 +32,8 @@ describe('harcon', function () {
 		try {
 			let harcon1 = new Harcon( {
 				name: harconNode1,
-				nodeID: 'Node1',
 				Barrel: Amqp.Barrel,
+				barrel: { nodeID: 'Node1' },
 				logger: logger, idLength: 32,
 				mortar: { enabled: true, folder: path.join( __dirname, 'bus1' ) },
 				blower: { commTimeout: 1500, tolerates: [ ] }
@@ -42,8 +42,8 @@ describe('harcon', function () {
 
 			let harcon2 = new Harcon( {
 				name: harconNode2,
-				nodeID: 'Node2',
 				Barrel: Amqp.Barrel,
+				barrel: { nodeID: 'Node2' },
 				logger: logger, idLength: 32,
 				mortar: { enabled: true, folder: path.join( __dirname, 'bus2' ) },
 				blower: { commTimeout: 1500, tolerates: [ ] }
