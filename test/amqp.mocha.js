@@ -41,6 +41,7 @@ describe('harcon', function () {
 
 			let harcon = new Harcon( {
 				name: harconName,
+				nodeID: 'Node1',
 				Barrel: Amqp.Barrel,
 				logger: logger, idLength: 32,
 				blower: { commTimeout: 1500, tolerates: ['Alizee.flegme'] },
@@ -70,7 +71,7 @@ describe('harcon', function () {
 	describe('Test Harcon system calls', function () {
 		it('Retrieve divisions...', async function () {
 			let divisions = await inflicter.divisions()
-			expect( divisions ).to.eql( [ harconName, harconName + '.click', 'HarconSys.maison.cache' ] )
+			expect( divisions.sort() ).to.eql( [ harconName, harconName + '.click', 'HarconSys.maison.cache' ] )
 		})
 		it('Retrieve entities...', async function () {
 			let entities = await inflicter.entities( )
@@ -79,7 +80,7 @@ describe('harcon', function () {
 		})
 		it('Send for divisions...', async function () {
 			let res = await inflicter.ignite( clerobee.generate(), null, '', 'Inflicter.divisions')
-			expect( res ).to.eql( [ 'HarconSys', 'HarconSys.click', 'HarconSys.maison.cache' ] )
+			expect( res.sort() ).to.eql( [ 'HarconSys', 'HarconSys.click', 'HarconSys.maison.cache' ] )
 		})
 		it('Clean internals', async function () {
 			let comms = await inflicter.pendingComms( )
