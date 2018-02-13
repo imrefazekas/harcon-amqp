@@ -135,7 +135,7 @@ describe('harcon', function () {
 	describe('State shifting', function () {
 		it('Simple case', async function () {
 			let Lina = inflicter.barrel.firestarter('Lina').object
-			await inflicter.ignite( clerobee.generate(), null, '', 'Marie.notify', 'data', 'Lina.marieChanged')
+			await inflicter.ignite( clerobee.generate(), null, '', 'Marie.notify', 'data', '', 'Lina.marieChanged')
 
 			await Proback.timeout( 250 )
 			await inflicter.ignite( clerobee.generate(), null, '', 'Marie.simple', 'Bonjour', 'Salut' )
