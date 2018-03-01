@@ -1,6 +1,6 @@
 {
   "name": "harcon-amqp",
-  "version": "8.7.0",
+  "version": "8.7.1",
   "description": "AMQP plugin for the harcon messaging/service bus of node-based enterprise entities.",
   "keywords": [
     "amqp",
@@ -27,7 +27,7 @@
     "harcon": "^8.7.0",
     "isa.js": "^2.2.0",
     "proback.js": "^2.1.6",
-    "rabbit.js": "git+ssh://git@github.com/imrefazekas/rabbit.js.git"
+    "rabbit.js": "git+https://github.com/imrefazekas/rabbit.js.git"
   },
   "devDependencies": {
     "chai": "^4.1.2",
