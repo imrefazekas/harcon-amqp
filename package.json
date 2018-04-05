@@ -24,8 +24,8 @@
   "main": "./lib/Amqp.js",
   "dependencies": {
     "clerobee": "^0.9.6",
-    "harcon": "^8.8.0",
-    "isa.js": "^2.2.0",
+    "harcon": "^8.8.1",
+    "isa.js": "^2.2.1",
     "proback.js": "^2.1.6",
     "rabbit.js": "git+https://github.com/imrefazekas/rabbit.js.git"
   },
@@ -33,7 +33,7 @@
     "chai": "^4.1.2",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
-    "pino": "^4.15.0",
+    "pino": "^4.16.0",
     "watch": "^1.0.2"
   },
   "engines": {
