@@ -24,7 +24,7 @@
   "main": "./lib/Amqp.js",
   "dependencies": {
     "clerobee": "^0.9.7",
-    "harcon": "^8.9.5",
+    "harcon": "^8.9.6",
     "isa.js": "^2.2.2",
     "proback.js": "^2.1.7",
     "rabbit.js": "git+https://github.com/imrefazekas/rabbit.js.git"
