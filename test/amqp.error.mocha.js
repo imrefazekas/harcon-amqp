@@ -51,10 +51,10 @@ describe('harcon', function () {
 
 			inflicter = await harcon.init()
 
-			await inflicter.inflicterEntity.addict( null, 'peter', 'greet.*', function (greetings1, greetings2) {
+			await inflicter.inflicterEntity.deploy( null, 'peter', 'greet.*', function (greetings1, greetings2) {
 				return Proback.quicker('Hi there!')
 			} )
-			await inflicter.inflicterEntity.addict( null, 'walter', 'greet.*', function (greetings1, greetings2) {
+			await inflicter.inflicterEntity.deploy( null, 'walter', 'greet.*', function (greetings1, greetings2) {
 				return Proback.quicker('My pleasure!')
 			} )
 
@@ -79,7 +79,7 @@ describe('harcon', function () {
 			expect( names ).to.eql( [ 'Alizee', 'Bandit', 'Boss', 'Charlotte', 'Claire', 'Domina', 'Inflicter', 'Julie', 'Lina', 'Margot', 'Marie', 'Marion', 'Mortar', 'peter', 'walter' ] )
 		})
 		it('Send for divisions...', async function () {
-			let res = await inflicter.ignite( clerobee.generate(), null, '', 'Inflicter.divisions')
+			let res = await inflicter.request( clerobee.generate(), null, '', 'Inflicter.divisions')
 			expect( res.sort() ).to.eql( [ 'HarconSys', 'HarconSys.click', 'HarconSys.maison.cache' ] )
 		})
 		it('Clean internals', async function () {
@@ -89,7 +89,7 @@ describe('harcon', function () {
 			} )
 		})
 		it('Walter check', async function () {
-			let res = await inflicter.ignite( clerobee.generate(), null, '', 'greet.hello', 'Bonjour!', 'Salut!')
+			let res = await inflicter.request( clerobee.generate(), null, '', 'greet.hello', 'Bonjour!', 'Salut!')
 			expect( res ).to.eql( [ 'Hi there!', 'My pleasure!' ] )
 		})
 	})
@@ -102,7 +102,7 @@ describe('harcon', function () {
 
 			await Proback.timeout( 20000 )
 
-			let res = await inflicter.ignite( clerobee.generate(), null, '', 'Alizee.dormir' )
+			let res = await inflicter.request( clerobee.generate(), null, '', 'Alizee.dormir' )
 			expect(res).to.eql( 'Non, non, non!' )
 		})
 	})

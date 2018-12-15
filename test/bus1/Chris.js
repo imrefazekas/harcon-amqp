@@ -5,10 +5,10 @@ module.exports = {
 		let self = this
 		self.config = config
 	},
-	echo: async function ( message, terms, ignite ) {
+	echo: async function ( message, terms ) {
 		return message
 	},
-	dormir: async function ( terms, ignite ) {
+	dormir: async function ( terms ) {
 		let self = this
 		setTimeout( async () => { console.log( '>>>>>>>>>', JSON.stringify( await self.harconEntities() ) ) }, 3000 )
 		return 'Oui!'

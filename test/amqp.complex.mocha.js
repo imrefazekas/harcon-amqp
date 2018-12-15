@@ -62,7 +62,7 @@ describe('harcon', function () {
 
 	describe('simple messages', function () {
 		it('Phil dormir', async function () {
-			let res = await inflicter2.ignite( clerobee.generate(), null, '', 'Phil.dormir' )
+			let res = await inflicter2.request( clerobee.generate(), null, '', 'Phil.dormir' )
 			expect( res ).to.eql( 'Oui!' )
 		})
 	})
