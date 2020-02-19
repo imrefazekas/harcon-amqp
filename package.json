@@ -25,7 +25,7 @@
   "dependencies": {
     "amqplib": "^0.5.5",
     "clerobee": "^1.0.1",
-    "harcon": "^9.2.25",
+    "harcon": "^9.2.26",
     "isa.js": "^2.2.12",
     "proback.js": "^2.1.10",
     "rabbit.js.ng": "^0.5.1"
