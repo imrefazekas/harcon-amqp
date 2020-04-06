@@ -25,7 +25,7 @@
   "dependencies": {
     "amqplib": "^0.5.5",
     "clerobee": "^1.0.1",
-    "harcon": "^9.2.27",
+    "harcon": "^9.2.28",
     "isa.js": "^2.2.12",
     "proback.js": "^2.1.10",
     "rabbit.js.ng": "^0.5.1"
@@ -33,9 +33,9 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "minimist": "^1.2.5",
-    "mkdirp": "^1.0.3",
+    "mkdirp": "^1.0.4",
     "pino": "~6",
-    "pino-pretty": "~3",
+    "pino-pretty": "~4",
     "watch": "^1.0.2"
   },
   "engines": {
