@@ -23,9 +23,9 @@
   "license": "MIT",
   "main": "./lib/Amqp.js",
   "dependencies": {
-    "amqplib": "^0.5.5",
+    "amqplib": "^0.5.6",
     "clerobee": "^1.0.1",
-    "harcon": "^9.2.28",
+    "harcon": "^9.2.29",
     "isa.js": "^2.2.12",
     "proback.js": "^2.1.10",
     "rabbit.js.ng": "^0.5.1"
