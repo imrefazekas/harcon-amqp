@@ -24,10 +24,10 @@
   "main": "./lib/Amqp.js",
   "dependencies": {
     "amqplib": "^0.6.0",
-    "clerobee": "^1.0.1",
+    "clerobee": "^1.0.2",
     "harcon": "^9.2.47",
     "isa.js": "^2.2.15",
-    "proback.js": "^2.1.15",
+    "proback.js": "^2.1.16",
     "rabbit.js.ng": "^0.5.1"
   },
   "devDependencies": {
